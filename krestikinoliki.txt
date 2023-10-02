@@ -1,0 +1,47 @@
+numbers = list(range(9))
+cells = 3
+dashes = 14
+spaces = 14
+counter = 0
+isWin = False
+combination = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
+player = ''
+while not isWin: 
+  for i in range(3):
+    print(' ' * spaces, end = '')
+    print('-' * dashes)
+    print(' ' * spaces, end = '')
+    print(f'| {numbers[i * 3]} | {numbers[i * 3 + 1]} | {numbers[i * 3 + 2]} |')
+    print(' ' * spaces, end = '')
+    print('-' * dashes)
+  if counter % 2 == 0:
+    player = 'X'
+  else:
+    player = 'О'
+    
+  counter = counter + 1
+  motion = int(input(f'Запишите номер поля в которое хотите поставить свой {player}: '))
+  if str(numbers[motion]) not in 'XO':
+    numbers[motion] = player
+  else:
+    print('Вы выбрали занятое значение(')
+    continue
+  if counter >= 5:
+    for s in combination:
+      if numbers[s[0]] == numbers[s[1]] == numbers[s[2]]:
+        isWin = True
+        for i in range(3):
+          print(' ' * spaces, end = '')
+          print('-' * dashes)
+          print(' ' * spaces, end = '')
+          print(f'| {numbers[i * 3]} | {numbers[i * 3 + 1]} | {numbers[i * 3 + 2]} |')
+          print(' ' * spaces, end = '')
+          print('-' * dashes)
+
+    if isWin:
+      print('Победил ', player)
+      break
+        
+  if counter == 9:
+      print('Ничья')
+      break

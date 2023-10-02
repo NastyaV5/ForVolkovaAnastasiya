@@ -1,0 +1,61 @@
+import random
+
+number = random.randint(0, 5)
+
+print('Попробуй угадать число от 0 до 5')
+
+user_number = int(input('Введите число от 0 до 5: '))
+
+attempts = 1
+  
+while user_number != number and attempts < 3:
+  print('Не угадал')
+  user_number = int(input('Введите число от 0 до 5: '))
+  attempts += 1
+  if user_number > 5 or user_number < 0:
+    print('Число должно быть не меньше нуля и не больше 5')
+    attempts -= 1
+  
+if user_number == number:
+  print('Ты выиграл')
+else:
+  print('Ты проиграл')
+  
+
+  result = 0
+
+for i in range(101):
+  result = i + result
+  
+print(result)
+
+
+
+
+
+Игра угадай букву:
+import random
+print('Отгадай слово по буквам за 10 попыток')
+robot = ['мяч', 'кошка', 'техника', 'дистанция', 'рука', 'инженер']
+robot1 = random.choice(robot)
+player = []
+isWin = True
+attempts = 10
+while attempts > 0:
+  isWin = True
+  for t in robot1:
+    if t in player:
+      print(t, end = ' ')
+    else:
+      print('*', end = ' ')
+      isWin = False
+  if isWin:
+    print('Ты победил))))')
+    break
+  player1 = input('Введите букву: ')
+  player.append(player1)
+  if player1 not in robot1:
+    attempts = attempts - 1
+    print('Вы ввлели не верную букву, попытайтесь ещё. Кол-во попыток: ', attempts)
+if attempts == 0: 
+  print('Вы проиграли(')
